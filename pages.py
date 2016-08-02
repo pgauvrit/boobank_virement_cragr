@@ -340,7 +340,7 @@ class TransactionsPage(Page):
             cols = tr.findall('td')
 
             # On loan accounts, there is a ca-table with a summary. Skip it.
-            if tr.find('th') is not None or len(cols) < 3:
+            if tr.find('th') is not None or len(cols) < 3 or cols[0].attrib.get('colspan', '') == '1':
                 continue
 
             t = Transaction(i)
